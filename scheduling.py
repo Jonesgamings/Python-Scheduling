@@ -1,6 +1,3 @@
-from typing import Any
-
-
 class Node:
 
     def __init__(self, name, parents, children = {}, early_start = None, late_start = None) -> None:
