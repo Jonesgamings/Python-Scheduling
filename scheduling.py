@@ -87,18 +87,18 @@ class Node:
 
 class Arc:
 
-    def __init__(self, start_node, end_node, duration) -> None:
+    def __init__(self, start_node, end_node, weight) -> None:
         self.start_node = start_node
         self.end_node = end_node
-        self.duration = duration
+        self.weight = weight
         self.name = f"{self.start_node.name}->{self.end_node.name}"
         self.total_float = None
         self.independent_float = None
         self.interfering_float = None
 
     def calculate_float(self):
-        self.total_float = (self.end_node.late_start - self.start_node.early_start) - self.duration
-        self.independent_float = max((self.end_node.early_start - self.start_node.late_start) - self.duration, 0)
+        self.total_float = (self.end_node.late_start - self.start_node.early_start) - self.weight
+        self.independent_float = max((self.end_node.early_start - self.start_node.late_start) - self.weight, 0)
         self.interfering_float = self.total_float - self.independent_float
 
     def __repr__(self) -> str:
