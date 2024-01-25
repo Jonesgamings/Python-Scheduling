@@ -114,7 +114,7 @@ def do_passes(nodes):
 def get_arcs(nodes):
     ARCS = []
     for node in nodes:
-        ARCS += node.arc
+        ARCS += node.arcs
 
     return ARCS
 
@@ -137,16 +137,11 @@ if __name__ == "__main__":
     D = Node("D", {B:6, C:0})
     E = Node("E", {C:3, D:0})
     F = Node("F", {D:9, E:11})
-    NODES = [A, B, C, D, E, F]
-    ARCS = []
-    for node in NODES:
-        ARCS += node.arcs
-
-    F.forward_pass()
-    A.backward_pass()
-
-    for arc in ARCS:
-        arc.calculate_float()
+    G = Node("G", {F:1, D:10, E:21})
+    NODES = [A, B, C, D, E, F, G]
+    do_passes(NODES)
+    ARCS = get_arcs(NODES)
+    calculate_floats(ARCS)
 
     print(NODES)
     print(ARCS)
