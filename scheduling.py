@@ -108,8 +108,8 @@ class Arc:
         return f"{self.name}: ({self.total_float}, {self.independent_float}, {self.interfering_float})"
 
 def do_passes(nodes):
-    node[-1].forward_pass()
-    node[0].backward_pass()
+    nodes[-1].forward_pass()
+    nodes[0].backward_pass()
 
 def get_arcs(nodes):
     ARCS = []
